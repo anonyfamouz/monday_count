@@ -4,43 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Countdown to Monday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       text-align: center;
       padding: 30px;
-      background-color: #f4f4f4;
-      color: #222; /* dark font */
+      background-color: #121212; /* dark background */
+      color: #f0f0f0; /* light text */
     }
     h1 {
       font-size: 28px;
       margin-bottom: 20px;
+      font-weight: 600;
     }
     .time-box {
       font-size: 22px;
       margin: 10px 0;
     }
     #seconds {
-      user-select: none; /* prevents accidental selection */
-    }
-    #seconds:hover {
-      background-color: #eee;
-    }
-    #seconds:active {
-      background-color: #ddd;
-    }
-    #seconds {
+      user-select: none;
       cursor: pointer;
       display: inline-block;
       padding: 5px 10px;
       border-radius: 5px;
       transition: background-color 0.2s;
-      /* visually neutral */
       color: inherit;
-      text-decoration: none;
+      background-color: #1e1e1e;
+    }
+    #seconds:hover {
+      background-color: #2c2c2c;
+    }
+    #seconds:active {
+      background-color: #3a3a3a;
     }
     .copied {
-      color: green;
+      color: #00ff99;
       font-size: 14px;
       margin-top: 5px;
     }
