@@ -24,19 +24,16 @@
     }
     #seconds {
       user-select: none;
-      cursor: pointer;
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: background-color 0.2s;
+      cursor: default; /* Nie ruka – obyčajný kurzor */
       color: inherit;
-      background-color: #1e1e1e;
+      background-color: transparent; /* Žiadne pozadie */
+      padding: 0;
+      border-radius: 0;
+      transition: none; /* Žiadne efekty */
     }
-    #seconds:hover {
-      background-color: #2c2c2c;
-    }
+    #seconds:hover,
     #seconds:active {
-      background-color: #3a3a3a;
+      background-color: transparent;
     }
     .copied {
       color: #00ff99;
