@@ -8,47 +8,67 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      text-align: center;
-      padding: 30px;
-      background-color: #121212; /* dark background */
-      color: #f0f0f0; /* light text */
+      background-color: #121212;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
+
+    .card {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
     h1 {
-      font-size: 28px;
+      font-size: 24px;
       margin-bottom: 20px;
       font-weight: 600;
     }
+
     .time-box {
-      font-size: 22px;
-      margin: 10px 0;
+      font-size: 20px;
+      margin: 12px 0;
+      padding: 12px;
+      background-color: #2a2a2a;
+      border-radius: 8px;
     }
+
     #seconds {
       user-select: none;
-      cursor: default; /* Nie ruka – obyčajný kurzor */
-      color: inherit;
-      background-color: transparent; /* Žiadne pozadie */
-      padding: 0;
-      border-radius: 0;
-      transition: none; /* Žiadne efekty */
+      cursor: default;
+      background-color: #2a2a2a;
+      transition: none;
     }
+
     #seconds:hover,
     #seconds:active {
-      background-color: transparent;
+      background-color: #2a2a2a;
     }
+
     .copied {
       color: #00ff99;
       font-size: 14px;
-      margin-top: 5px;
+      margin-top: 8px;
     }
   </style>
 </head>
 <body>
-  <h1>Countdown to Monday</h1>
-  <div class="time-box" id="mainDisplay"></div>
-  <div class="time-box" id="hours"></div>
-  <div class="time-box" id="minutes"></div>
-  <div class="time-box" id="seconds" onclick="copySeconds()"></div>
-  <div id="copiedMessage" class="copied" style="display:none;">Copied to clipboard!</div>
+  <div class="card">
+    <h1>Countdown to Monday</h1>
+    <div class="time-box" id="mainDisplay"></div>
+    <div class="time-box" id="hours"></div>
+    <div class="time-box" id="minutes"></div>
+    <div class="time-box" id="seconds" onclick="copySeconds()"></div>
+    <div id="copiedMessage" class="copied" style="display:none;">Copied to clipboard!</div>
+  </div>
 
   <script>
     function updateCountdown() {
