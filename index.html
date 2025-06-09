@@ -31,6 +31,8 @@
       font-size: 24px;
       margin-bottom: 20px;
       font-weight: 600;
+      text-transform: uppercase;
+      color: #aaff44; /* limetková farba */
     }
 
     .time-box {
@@ -71,6 +73,10 @@
   </div>
 
   <script>
+    function pluralize(value, singular, plural) {
+      return value === 1 ? `${value} ${singular}` : `${value} ${plural}`;
+    }
+
     function updateCountdown() {
       const now = new Date();
       const day = now.getDay();
@@ -92,7 +98,7 @@
       const minutes = Math.floor((diffMs / (1000 * 60)) % 60);
 
       document.getElementById("mainDisplay").textContent =
-        `${days} days, ${hours} hours, ${minutes} minutes`;
+        `${pluralize(days, 'day', 'days')}, ${pluralize(hours, 'hour', 'hours')}, ${pluralize(minutes, 'minute', 'minutes')}`;
 
       document.getElementById("hours").textContent = `Hours: ${totalHours}`;
       document.getElementById("minutes").textContent = `Minutes: ${totalMinutes}`;
