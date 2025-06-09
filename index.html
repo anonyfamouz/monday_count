@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Pondelka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .time-box {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+    .copyable {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .copied {
+      color: green;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Odpočítavanie do pondelka</h1>
+  <div class="time-box" id="mainDisplay"></div>
+  <div class="time-box" id="hours"></div>
+  <div class="time-box" id="minutes"></div>
+  <div class="time-box copyable" id="seconds" onclick="copySeconds()"></div>
+  <div id="copiedMessage" class="copied" style="display:none;">Skopírované do schránky!</div>
 
+  <script>
+    function updateCountdown() {
+      const now = new Date();
+      const day = now.getDay();
+      const daysUntilMonday = (8 - day) % 7 || 7;
+
+      const nextMonday = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + daysUntilMonday,
+        0, 0, 0
+      );
+
+      const diffMs = nextMonday - now;
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diffMs / (1000 * 60)) % 60);
+
+      document.getElementById("mainDisplay").textContent =
+        `${days} dní, ${hours} hodín, ${minutes} minút`;
+
+      document.getElementById("hours").textContent = `Hodiny: ${totalHours}`;
+      document.getElementById("minutes").textContent = `Minúty: ${totalMinutes}`;
+      document.getElementById("seconds").textContent = `Sekundy: ${totalSeconds}`;
+    }
+
+    function copySeconds() {
+      const text = document.getElementById("seconds").textContent.replace('Sekundy: ', '');
+      navigator.clipboard.writeText(text).then(() => {
+        const msg = document.getElementById("copiedMessage");
+        msg.style.display = "block";
+        setTimeout(() => msg.style.display = "none", 1500);
+      });
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
